@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="nav-left">
+            <p>easyBlogApp</p>
+        </div>
+        <div class="nav-right">
+            <a href="/profile/upload">change profile pic</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="profile-main">
+        <div class="profilediv">
+            <div class="profileimg">
+                <img src="/images/uploads/<%= oneuser.profilepic %>" alt="">
+            </div>
+            <h3>Hello, <%= oneuser.name %> 👋🏻</h3>
+        </div>
+        <h4>Create new post =></h4>
+        <form action="/postroute" method="post">
+            <textarea name="content" placeholder="What's on your mind?" ></textarea>
+            <button type="submit">Create Post</button>
+        </form>
+        <div class="post-section">
+            <h5>Your recent posts =></h5>
+            <div class="post-cards">
+
+                <% oneuser.posts.reverse().forEach(function(post){  %>
+                    <div class="card">
+                        <h6>@<%= oneuser.username %></h6>
+                        <p><%= post.content %></p>
+                        <small><%= post.likes.length %> likes</small>
+                        <div class="post-r-btns">
+                            <a href="/like/<%= post._id %>">
+                                <%= post.likes.indexOf(oneuser._id) === -1 ? "Like" : "Unlike" %>
+                            </a>
+                            <a href="/edit/<%= post._id %>">Edit</a>
+                        </div>
+                    </div>
+                <% }) %>    
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

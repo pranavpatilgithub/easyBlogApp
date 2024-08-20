@@ -1,0 +1,46 @@
+npm init -y
+npm i express
+npm i mongoose
+npm i bcrypt
+npm i jsonwebtoken
+npm i cookie-parser
+npm i ejs
+npm i multer
+
+run : npx nodemon app.js
+
+This will be small web app where user can write there post 
+Features
+- login and register
+- logout
+- profile
+- post likes
+- post creation
+- post deletion
+- post edit
+- upload profile picture
+
+Routes
+- /
+- /login
+- /profile
+- /edit
+- /logout
+- /profile/upload
+
+database 
+- mini-project-01
+
+collections
+- posts
+- users
+
+This app includes
+- jsonwebtoken
+- bcrypt
+- cookie
+- middleware for protected Routes
+- CRUD operations
+- multer : for uploading profile picture, saving it in folder at backend.
+
+Stusy them will and focus how they are used
